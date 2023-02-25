@@ -167,9 +167,8 @@ if __name__ == '__main__':
         central = neighborhood['res_id']
         for name, res_id in zip(neighborhood['atom_names'], neighborhood['res_ids']):
             if name not in BACKBONE: 
-                if(tuple(res_id) == tuple(central)): 
-                    print(res_id)
-
+                assert(tuple(res_id) != tuple(central)) 
+                
     def report_confidence_interval(Ps, p, alpha=.95):
         import scipy.stats as st
         i = st.t.interval(alpha=alpha, df=len(Ps)-1,
