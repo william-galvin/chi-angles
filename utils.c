@@ -44,10 +44,11 @@ void get_mask(int SIZE, int MAX_SITES,
               float p, int* backbone_atoms, int bb_len, 
               char central_chain, long central_site)
 {
-    int central_index = (central_chain - 'A') * MAX_SITES + central_site;
+    int MAX_CHAINS = 10;
+    int central_index = ((central_chain - 'A') * MAX_SITES + central_site) % (MAX_CHAINS * MAX_SITES);
     for (int i = 0; i < SIZE; i++) 
     {
-        int id_index = (chains[i * 6] - 'A') * MAX_SITES + sites[i];
+        int id_index = ((chains[i * 6] - 'A') * MAX_SITES + sites[i]) % (MAX_CHAINS * MAX_SITES);
         if (! (seen[id_index]))
         {
             seen[id_index] = 1;
