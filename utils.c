@@ -49,6 +49,14 @@ void get_mask(int SIZE, int MAX_SITES,
     for (int i = 0; i < SIZE; i++) 
     {
         int id_index = ((chains[i * 6] - 'A') * MAX_SITES + sites[i]) % (MAX_CHAINS * MAX_SITES);
+        
+        // Sometimes site[i] = -1, which causes the index to be -1 when 
+        // chain = 0. Unclear why exactly site would ever be -1, but is 
+        // a data issue. Could cause collisions in map -- this check only avoids segfaults
+        if (id_index < 0) {
+            id_index += MAX_CHAINS * MAX_SITES;
+        }
+        
         if (! (seen[id_index]))
         {
             seen[id_index] = 1;
