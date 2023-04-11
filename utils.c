@@ -43,19 +43,12 @@ void get_mask(int SIZE, int MAX_SITES,
               char* seen, char* removed, double* random, char* mask, 
               float p, int* backbone_atoms, int bb_len, 
               char central_chain, long central_site)
-{
+{   
     int MAX_CHAINS = 10;
-    int central_index = ((central_chain - 'A') * MAX_SITES + central_site) % (MAX_CHAINS * MAX_SITES);
+    int central_index = ((central_chain - 'A') * MAX_SITES + (central_site + 1)) % (MAX_CHAINS * MAX_SITES);
     for (int i = 0; i < SIZE; i++) 
-    {
-        int id_index = ((chains[i * 6] - 'A') * MAX_SITES + sites[i]) % (MAX_CHAINS * MAX_SITES);
-        
-        // Sometimes site[i] = -1, which causes the index to be -1 when 
-        // chain = 0. Unclear why exactly site would ever be -1, but is 
-        // a data issue. Could cause collisions in map -- this check only avoids segfaults
-        if (id_index < 0) {
-            id_index += MAX_CHAINS * MAX_SITES;
-        }
+    {        
+        int id_index = ((chains[i * 6] - 'A') * MAX_SITES + (sites[i] + 1)) % (MAX_CHAINS * MAX_SITES);
         
         if (! (seen[id_index]))
         {
