@@ -44,16 +44,16 @@
     "output_dim": 4,
     "n_cg_blocks": 6,
     "n_fc_blocks": 1,
-    "fc_h_dim": 210,
+    "fc_h_dim": 150,
     "fc_nonlin": "silu",
     "dropout_rate": 0.0,
     "ch_size_list": [
+      30,
       60,
       90,
       120,
       150,
-      180,
-      210
+      150
     ],
     "ls_nonlin_rule_list": [
       "efficient",
@@ -72,12 +72,12 @@
       "elementwise"
     ],
     "do_initial_linear_projection": true,
-    "ch_initial_linear_projection": 60,
+    "ch_initial_linear_projection": 30,
     "lmax_list": [
-      8,
-      6,
       6,
       4,
+      2,
+      2,
       2,
       0
     ],
