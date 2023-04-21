@@ -74,9 +74,9 @@
     "do_initial_linear_projection": true,
     "ch_initial_linear_projection": 60,
     "lmax_list": [
+      8,
       6,
       6,
-      4,
       4,
       2,
       0
@@ -94,9 +94,9 @@
     "filter_symmetric": true,
     "input_normalizing_constant": null
   },
-  "n_epochs": 10,
+  "n_epochs": 5,
   "lr": 0.001,
   "lr_scheduler": "reduce_lr_on_plateau",
-  "batch_size": 50,
+  "batch_size": 32,
   "seed": 123456789
 }
