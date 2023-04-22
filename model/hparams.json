@@ -42,22 +42,18 @@
   "model_type": "so3_convnet",
   "model_hparams": {
     "output_dim": 4,
-    "n_cg_blocks": 6,
+    "n_cg_blocks": 4,
     "n_fc_blocks": 1,
-    "fc_h_dim": 150,
+    "fc_h_dim": 120,
     "fc_nonlin": "silu",
     "dropout_rate": 0.0,
     "ch_size_list": [
       30,
       60,
       90,
-      120,
-      150,
-      150
+      120
     ],
     "ls_nonlin_rule_list": [
-      "efficient",
-      "efficient",
       "efficient",
       "efficient",
       "efficient",
@@ -67,17 +63,13 @@
       "elementwise",
       "elementwise",
       "elementwise",
-      "elementwise",
-      "elementwise",
       "elementwise"
     ],
     "do_initial_linear_projection": true,
     "ch_initial_linear_projection": 30,
     "lmax_list": [
-      6,
       4,
-      2,
-      2,
+      4,
       2,
       0
     ],
@@ -95,7 +87,7 @@
     "input_normalizing_constant": null
   },
   "n_epochs": 5,
-  "lr": 0.001,
+  "lr": 0.00125,
   "lr_scheduler": "reduce_lr_on_plateau",
   "batch_size": 32,
   "seed": 123456789
