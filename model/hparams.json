@@ -8,6 +8,7 @@
   "rmax": 20,
   "rst_normalization": "square",
   "train_data": "/gscratch/scrubbed/wgalvin/training_zgrams.hdf5",
+  "fake_train_data": "/gscratch/scrubbed/wgalvin/valid2_final_zgrams.hdf5",
   "valid_data": "/gscratch/scrubbed/wgalvin/valid_final_zgrams.hdf5",
   "test_data": "/gscratch/scrubbed/wgalvin/valid_tiny.hdf5",
   "channels": [
@@ -42,18 +43,26 @@
   "model_type": "so3_convnet",
   "model_hparams": {
     "output_dim": 4,
-    "n_cg_blocks": 4,
+    "n_cg_blocks": 8,
     "n_fc_blocks": 1,
-    "fc_h_dim": 120,
+    "fc_h_dim": 210,
     "fc_nonlin": "silu",
     "dropout_rate": 0.0,
     "ch_size_list": [
-      30,
       60,
       90,
-      120
+      120,
+      150,
+      180,
+      180,
+      180,
+      210
     ],
     "ls_nonlin_rule_list": [
+      "efficient",
+      "efficient",
+      "efficient",
+      "efficient",
       "efficient",
       "efficient",
       "efficient",
@@ -63,14 +72,22 @@
       "elementwise",
       "elementwise",
       "elementwise",
+      "elementwise",
+      "elementwise",
+      "elementwise",
+      "elementwise",
       "elementwise"
     ],
     "do_initial_linear_projection": true,
-    "ch_initial_linear_projection": 30,
+    "ch_initial_linear_projection": 60,
     "lmax_list": [
+      8,
+      8,
+      8,
+      8,
+      6,
       4,
       4,
-      2,
       0
     ],
     "use_additive_skip_connections": true,
@@ -86,9 +103,9 @@
     "filter_symmetric": true,
     "input_normalizing_constant": null
   },
-  "n_epochs": 5,
-  "lr": 0.00125,
+  "n_epochs": 10,
+  "lr": 0.002,
   "lr_scheduler": "reduce_lr_on_plateau",
-  "batch_size": 32,
+  "batch_size": 64,
   "seed": 123456789
 }
