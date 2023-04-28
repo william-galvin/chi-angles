@@ -10,5 +10,9 @@ improve validation scores
 	- Learning rate
 	- Batch size
 
+- Loss Functions
+	- Added noise to the invalid entries
+	- Divisor term is number of valid entries
+
 - Things to try next:
 	- More data? (Twice as much? -- is there a new pipeline for this?)
