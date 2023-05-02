@@ -55,9 +55,6 @@ class Reconstructor():
             atoms[atom] = coords
         
         #=====virtualize beta carbon============
-        if 'N' not in atoms or'C' not in atoms or 'CA' not in atoms: # check that all needed atoms are found in neighborhood
-            return None
-    
         CB_norm = get_normal_vector(atoms['N'], atoms['C'], atoms['CA'])
         
         atoms['CB'] = get_atom_place(
@@ -76,8 +73,6 @@ class Reconstructor():
             if AA not in self.chi_atoms[f'chi{chi_num}']: break
             
             a1, a2, a3, a4 = self.chi_atoms[f'chi{chi_num}'][AA]
-            if a2 not in atoms or a3 not in atoms or a4 not in atoms: # check that all needed atoms are found in neighborhood
-                continue
                 
             p1_norm = get_normal_vector(atoms[a1], atoms[a2], atoms[a3])
             chi_angle = chi_angles[chi_num - 1]
